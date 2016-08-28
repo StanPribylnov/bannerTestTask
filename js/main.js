@@ -13,6 +13,6 @@
 
     elements.$range.oninput = function() {
         console.log(elements.$range.value);
-        elements.$product.style.backgroundPositionY = -218 * elements.$range.value + "px";
+        elements.$product.style.backgroundPositionY = -221 * elements.$range.value + "px";
     };
 }());
