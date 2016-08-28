@@ -1,0 +1,224 @@
+html,body {
+    padding: 0;
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+
+.banner {
+    width: 970px;
+    height:250px;
+    border: 1px solid black;
+}
+
+.banner .details,
+.banner .content,
+.banner .product-configuration {
+    float: left;
+}
+
+/*          Start banner controls           */
+.banner-controls {
+    position: relative;
+    height: 25px;
+}
+
+.banner-controls .close {
+    float: right;
+    color: black;
+    font-size: 12px;
+}
+.banner-controls .close span {
+    display: inline-block;
+    width: 25px;
+    height: 25px;
+    margin: 0 0 -8px 3px;
+    background: url("../img/close_black.png") 0 0 no-repeat;
+}
+/*          End banner controls           */
+
+/*          Start Details           */
+.banner .details {
+    width: 220px;
+    height: 185px;
+    padding: 20px;
+    position: relative;
+}
+
+.details header .company {
+    display: block;
+    width: 75px;
+    height: 14px;
+    background: url("../img/T_SamsungLogo.png") 0 0 no-repeat;
+    background-size: 100%;
+}
+
+.details header .details-title {
+    display: block;
+    width: 190px;
+    height: 30px;
+    background: url("../img/T_GalaxyLogo.png") 0 0 no-repeat;
+    background-size: 100%;
+}
+
+.details .details-properties {
+    width: 210px;
+    position: absolute;
+    bottom: 0;
+}
+
+.details .details-properties .property {
+    display: none;
+    font-size: 18px;
+    text-transform: uppercase;
+}
+
+.details .details-properties .property.active {
+    display: block;
+}
+/*          End Details         */
+
+/*          Start Content           */
+.banner .content {
+    width: 450px;
+    height: 225px;
+    margin: 0 20px;
+}
+
+.content .product {
+    width: 450px;
+    height: 225px;
+    background: url("../img/phone/phone_sprite.png") -32px 1px
+}
+/*          End Content         */
+
+/*          Start Product configuration           */
+.banner .product-configuration {
+    width: 180px;
+    height: 205px;
+    padding: 0 20px 20px 0;
+    float: right;
+    position: relative;
+}
+
+.product-configuration .dragbar {
+    float: left;
+    width: 50px;
+}
+.product-configuration .dragbar-tooltip {
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+.product-configuration .black-btn {
+    display: inline-block;
+    padding: 10px 20px;
+    position: absolute;
+    left: 53px;
+    bottom: 20px;
+    background-color: black;
+    border-radius: 25px;
+    -moz-border-radius: 25px;
+    -webkit-border-radius: 25px;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-size: 14px;
+    color: white;
+}
+.dragbar {
+    padding: 25px 0;
+    -moz-transform: rotate(90deg); /* Для Firefox */
+    -ms-transform: rotate(90deg); /* Для IE */
+    -webkit-transform: rotate(90deg); /* Для Safari, Chrome, iOS */
+    -o-transform: rotate(90deg); /* Для Opera */
+    transform: rotate(90deg);
+}
+.dragbar input[type=range] {
+    /*removes default webkit styles*/
+    -webkit-appearance: none;
+
+    /*fix for FF unable to apply focus style bug */
+    border: 1px solid white;
+
+    /*required for proper track sizing in FF*/
+    width: 190px;
+}
+.dragbar input[type=range]::-webkit-slider-runnable-track {
+    width: 190px;
+    height: 1px;
+    background: #ddd;
+    border: none;
+    border-radius: 3px;
+}
+.dragbar input[type=range]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    border: none;
+    height: 20px;
+    width: 20px;
+    border-radius: 50%;
+    background: black;
+    margin-top: -9px;
+}
+.dragbar input[type=range]:focus {
+    outline: none;
+}
+.dragbar input[type=range]:focus::-webkit-slider-runnable-track {
+    background: #ccc;
+}
+
+.dragbar input[type=range]::-moz-range-track {
+    width: 190px;
+    height: 5px;
+    background: #ddd;
+    border: none;
+    border-radius: 3px;
+}
+.dragbar input[type=range]::-moz-range-thumb {
+    border: none;
+    height: 16px;
+    width: 16px;
+    border-radius: 50%;
+    background: goldenrod;
+}
+
+/*hide the outline behind the border*/
+.dragbar input[type=range]:-moz-focusring{
+    outline: 1px solid white;
+    outline-offset: -1px;
+}
+
+.dragbar input[type=range]::-ms-track {
+    width: 190px;
+    height: 5px;
+
+    /*remove bg colour from the track, we'll use ms-fill-lower and ms-fill-upper instead */
+    background: transparent;
+
+    /*leave room for the larger thumb to overflow with a transparent border */
+    border-color: transparent;
+    border-width: 6px 0;
+
+    /*remove default tick marks*/
+    color: transparent;
+}
+.dragbar input[type=range]::-ms-fill-lower {
+    background: #777;
+    border-radius: 10px;
+}
+.dragbar input[type=range]::-ms-fill-upper {
+    background: #ddd;
+    border-radius: 10px;
+}
+.dragbar input[type=range]::-ms-thumb {
+    border: none;
+    height: 16px;
+    width: 16px;
+    border-radius: 50%;
+    background: goldenrod;
+}
+.dragbar input[type=range]:focus::-ms-fill-lower {
+    background: #888;
+}
+.dragbar input[type=range]:focus::-ms-fill-upper {
+    background: #ccc;
+}
+/*          End product configuration         */
