@@ -89,6 +89,14 @@ html,body {
     height: 225px;
     background: url("../img/phone/phone_sprite.png") -32px 1px
 }
+
+.product iframe{
+    width: 365px;
+    height: 202px;
+    padding: 10px 0;
+    display: block;
+    margin: 0 auto;
+}
 /*          End Content         */
 
 /*          Start Product configuration           */
