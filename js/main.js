@@ -2,18 +2,15 @@
  * Created by Stan on 28.08.2016.
  */
 
-// 2. This code loads the IFrame Player API code asynchronously.
 var tag = document.createElement('script');
 
 tag.src = "https://www.youtube.com/iframe_api";
 var firstScriptTag = document.getElementsByTagName('script')[0];
 firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
 
-// 3. This function creates an <iframe> (and YouTube player)
-//    after the API code downloads.
 var player;
 function onYouTubeIframeAPIReady() {
-    player = new YT.Player('video', {
+    player = new YT.Player('video-frame', {
         height: '363',
         width: '202',
         videoId: '9xKR8Vcjias',
@@ -29,9 +26,6 @@ function onPlayerReady(event) {
     event.target.playVideo();
 }
 
-// 5. The API calls this function when the player's state changes.
-//    The function indicates that when playing a video (state=1),
-//    the player should play for six seconds and then stop.
 var done = false;
 function onPlayerStateChange(event) {
     if (event.data == YT.PlayerState.PLAYING && !done) {
@@ -81,6 +75,7 @@ function playVideo() {
          * Method toggle video state
          *
          * @method toggleVideo
+         * @param state {boolean} - state of video
          * @returns {void}
          */
         function toggleVideo(state) {
@@ -125,25 +120,6 @@ function playVideo() {
         (function init() {
             setEventHandlers();
         }());
-
-        /**
-         property contains the module
-         * default settings
-         *
-         * @property defaultSettings
-         * @type {Object}
-         */
-        Banner.prototype.defaultSettings = {
-            dependencies: {},
-            identifiers: {
-                module: ".product-card"
-            },
-            classes: {},
-            selectors: {
-                payProductBtn: ".btn-link_to_market"
-            },
-            productsIdLimit: 15
-        };
 
         return Banner;
     }());
