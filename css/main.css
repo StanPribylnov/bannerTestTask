@@ -99,6 +99,39 @@ html, body {
     margin: 0 auto;
 }
 
+.product .rain-drop-1 {
+    width: 40px;
+    height: 40px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: url("../img/raindrop_1.png") no-repeat;
+}
+.product .rain-drop-2 {
+    width: 40px;
+    height: 40px;
+    position: absolute;
+    top: 0;
+    left: 40px;
+    background: url("../img/raindrop_2.png") no-repeat;
+}
+.product .rain-drop-3 {
+    width: 40px;
+    height: 40px;
+    position: absolute;
+    top: 0;
+    left: 80px;
+    background: url("../img/raindrop_3.png") no-repeat;
+}
+.product .rain-drop-4 {
+    width: 40px;
+    height: 40px;
+    position: absolute;
+    top: 0;
+    left: 120px;
+    background: url("../img/raindrop_4.png") no-repeat;
+}
+
 .product .flashlight {
     display: none;
     width: 280px;

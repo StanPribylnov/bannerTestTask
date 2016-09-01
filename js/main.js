@@ -91,6 +91,16 @@ function onYouTubeIframeAPIReady() {
             ];
 
         /**
+         * Method generate random number
+         *
+         * @method randomNumber
+         * @returns {number}
+         */
+        function randomNumber(min, max) {
+            return Math.floor(Math.random() * (max - min + 1) + min);
+        }
+
+        /**
          * Method toggle video state
          *
          * @method isDefaultState
@@ -143,6 +153,41 @@ function onYouTubeIframeAPIReady() {
                 elements.$productText.innerHTML = productTexts[2].text;
             } else if (position >= 45) {
                 elements.$productText.innerHTML = productTexts[3].text;
+            }
+        }
+
+        /**
+         * Method show product text
+         *
+         * @method renderRainItem
+         * @param position {number} - position of range slider
+         * @returns {void}
+         */
+        function renderRainItems(position) {
+        }
+
+        /**
+         * Method generate rain
+         *
+         * @method generateRain
+         * @param position {number} - position of range slider
+         * @returns {void}
+         */
+        function generateRain(position) {
+            var i = 0,
+                rainItemsCount = randomNumber(15, 30),
+                rainItems = [];
+
+            if (position >= 3 && position <= 21) {
+                for (i = 0; i <= rainItemsCount; i++) {
+                    rainItems.push({
+                        rainDropType: randomNumber(1, 4),
+                        startPositionX: randomNumber(1, 500),
+                        startPositionY: randomNumber(1, 500)
+                    });
+                }
+                console.log(rainItems);
+                renderRainItems(1);
             }
         }
 
@@ -201,6 +246,7 @@ function onYouTubeIframeAPIReady() {
                 toggleVideo(isDefaultState());
                 changeImage();
                 showProductText(elements.$range.value);
+                generateRain(elements.$range.value);
                 flashlight(elements.$range.value);
                 memoryLightning(elements.$range.value);
             };
