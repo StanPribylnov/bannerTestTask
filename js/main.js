@@ -2,44 +2,55 @@
  * Created by Stan on 28.08.2016.
  */
 
-var tag = document.createElement('script');
+/**
+ * Start config for video player
+ */
+var tag = document.createElement('script'),
+    player,
+    firstScriptTag = document.getElementsByTagName('script')[0];
 
 tag.src = "https://www.youtube.com/iframe_api";
-var firstScriptTag = document.getElementsByTagName('script')[0];
 firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
 
-var player;
+/**
+ * Function run autoplay
+ * video player
+ */
+function onPlayerReady(event) {
+    event.target.playVideo();
+}
+
+/**
+ * Function play video player
+ */
+function playVideo() {
+    player.playVideo();
+}
+
+/**
+ * Function stop video player
+ */
+function stopVideo() {
+    player.pauseVideo();
+}
+
+/**
+ * Function set config
+ * to video player
+ */
 function onYouTubeIframeAPIReady() {
     player = new YT.Player('video-frame', {
         height: '363',
         width: '202',
         videoId: '9xKR8Vcjias',
         events: {
-            'onReady': onPlayerReady,
-            'onStateChange': onPlayerStateChange
+            'onReady': onPlayerReady
         }
     });
 }
-
-// 4. The API will call this function when the video player is ready.
-function onPlayerReady(event) {
-    event.target.playVideo();
-}
-
-var done = false;
-function onPlayerStateChange(event) {
-    if (event.data == YT.PlayerState.PLAYING && !done) {
-        setTimeout(stopVideo, 6000);
-        done = true;
-    }
-}
-function stopVideo() {
-    player.pauseVideo();
-}
-function playVideo() {
-    player.playVideo();
-}
-
+/**
+ * End config for video player
+ */
 
 (function () {
     "use strict";
@@ -54,12 +65,28 @@ function playVideo() {
         var elements = {
                 $range: document.getElementById("range"),
                 $product : document.getElementById("product"),
-                $video : document.getElementById("video")
+                $video : document.getElementById("video"),
+                $productText : document.getElementById("product-text"),
+                $flashlight : document.getElementById("flashlight")
             },
             opts = {
                 stepSize: -221
             },
-            defaultVal = elements.$range.defaultValue;
+            defaultVal = elements.$range.defaultValue,
+            productTexts = [
+                {
+                    text: "Rethink what a phone can do"
+                },
+                {
+                    text: "Water and dust resistant: Real world ready"
+                },
+                {
+                    text: "Capture picture perfect moments in all conditions"
+                },
+                {
+                    text: "Expandable memory: Fit more of what you love"
+                }
+            ];
 
         /**
          * Method toggle video state
@@ -99,6 +126,46 @@ function playVideo() {
         }
 
         /**
+         * Method show product text
+         *
+         * @method showProductText
+         * @param position {number} - position of range slider
+         * @returns {void}
+         */
+        function showProductText(position) {
+            if (position >= 0 && position < 3) {
+                elements.$productText.innerHTML = productTexts[0].text;
+            } else if (position >= 3 && position < 21) {
+                elements.$productText.innerHTML = productTexts[1].text;
+            } else if (position >= 21 && position < 45) {
+                elements.$productText.innerHTML = productTexts[2].text;
+            } else if (position >= 45) {
+                elements.$productText.innerHTML = productTexts[3].text;
+            }
+        }
+
+        /**
+         * Method show flashlight camera
+         *
+         * @method flashlight
+         * @param position {number} - position of range slider
+         * @returns {void}
+         */
+        function flashlight(position) {
+            if (position == 30) {
+                elements.$flashlight.style.display = "block";
+
+                setTimeout(function () {
+                    elements.$flashlight.style.backgroundSize = "130%";
+                    setTimeout(function () {
+                        elements.$flashlight.style.display = "none";
+                        elements.$flashlight.style.backgroundSize = "40%";
+                    }, 200);
+                }, 70);
+            }
+        }
+
+        /**
          * Method sets handlers for events
          *
          * @method setEventHandlers
@@ -106,8 +173,12 @@ function playVideo() {
          */
         function setEventHandlers() {
             elements.$range.oninput = function () {
-                changeImage();
+                console.log(elements.$range.value);
+
                 toggleVideo(isDefaultState());
+                changeImage();
+                showProductText(elements.$range.value);
+                flashlight(elements.$range.value);
             };
         }
 
@@ -119,6 +190,7 @@ function playVideo() {
          */
         (function init() {
             setEventHandlers();
+            showProductText(0);
         }());
 
         return Banner;
