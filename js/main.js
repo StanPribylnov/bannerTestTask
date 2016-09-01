@@ -67,7 +67,9 @@ function onYouTubeIframeAPIReady() {
                 $product : document.getElementById("product"),
                 $video : document.getElementById("video"),
                 $productText : document.getElementById("product-text"),
-                $flashlight : document.getElementById("flashlight")
+                $flashlight : document.getElementById("flashlight"),
+                $memoryLightning : document.getElementById("memory-lightning"),
+                $memorySocket : document.getElementById("memory-socket")
             },
             opts = {
                 stepSize: -221
@@ -166,6 +168,27 @@ function onYouTubeIframeAPIReady() {
         }
 
         /**
+         * Method show memory lightning
+         *
+         * @method memoryLightning
+         * @param position {number} - position of range slider
+         * @returns {void}
+         */
+        function memoryLightning(position) {
+            if (position == 59) {
+                elements.$memorySocket.style.display = "block";
+                setTimeout(function () {
+                    elements.$memoryLightning.style.backgroundPosition = "55px 0px";
+                    setTimeout(function () {
+                        elements.$memoryLightning.style.backgroundPosition = "-45px 0px";
+                    }, 150);
+                }, 150);
+            } else {
+                elements.$memorySocket.style.display = "none";
+            }
+        }
+
+        /**
          * Method sets handlers for events
          *
          * @method setEventHandlers
@@ -179,6 +202,7 @@ function onYouTubeIframeAPIReady() {
                 changeImage();
                 showProductText(elements.$range.value);
                 flashlight(elements.$range.value);
+                memoryLightning(elements.$range.value);
             };
         }
 
