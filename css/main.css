@@ -1,4 +1,4 @@
-html,body {
+html, body {
     padding: 0;
     margin: 0;
     font-family: Arial, sans-serif;
@@ -6,7 +6,7 @@ html,body {
 
 .banner {
     width: 970px;
-    height:250px;
+    height: 250px;
     border: 1px solid black;
 }
 
@@ -27,6 +27,7 @@ html,body {
     color: black;
     font-size: 12px;
 }
+
 .banner-controls .close span {
     display: inline-block;
     width: 25px;
@@ -34,6 +35,7 @@ html,body {
     margin: 0 0 -8px 3px;
     background: url("../img/close_black.png") 0 0 no-repeat;
 }
+
 /*          End banner controls           */
 
 /*          Start Details           */
@@ -67,14 +69,9 @@ html,body {
 }
 
 .details .details-properties .property {
-    display: none;
-    font-size: 18px;
-    text-transform: uppercase;
+    font-size: 24px;
 }
 
-.details .details-properties .property.active {
-    display: block;
-}
 /*          End Details         */
 
 /*          Start Content           */
@@ -90,13 +87,67 @@ html,body {
     background: url("../img/phone/phone_sprite.png") -32px 1px
 }
 
-.product iframe{
+.product {
+    position: relative;
+}
+
+.product iframe {
     width: 365px;
     height: 202px;
     padding: 10px 0;
     display: block;
     margin: 0 auto;
 }
+
+.product .flashlight {
+    display: none;
+    width: 280px;
+    height: 280px;
+    position: absolute;
+    top: -65px;
+    left: -65px;
+    background: url("../img/flash.png") center no-repeat;
+    transition: background-size 0.15s ease-in;
+    -moz-transition: background-size 0.15s ease-in;
+    -web-kit-transition: background-size 0.15s ease-in;
+    background-size: 40%;
+}
+
+.product .memory-card {
+    width: 55px;
+    height: 40px;
+    position: absolute;
+    top: 141px;
+    left: 47px;
+    overflow: hidden;
+}
+
+.product .memory-card .lightning {
+    width: 70px;
+    height: 60px;
+    position: absolute;
+    top: -9px;
+    left: -10px;
+    -webkit-transform: rotate(-27deg);
+    -moz-transform: rotate(-27deg);
+    -ms-transform: rotate(-27deg);
+    -o-transform: rotate(-27deg);
+    transform: rotate(-27deg);
+    transition: background-position 0.15s ease-in;
+    -moz-transition: background-position 0.15s ease-in;
+    -web-kit-transition: background-position 0.15s ease-in;
+    background: url("../img/card_highlight.png") -45px 0 no-repeat;
+    background-size: 55px 60px;
+}
+.product .memory-card .socket {
+    width: 55px;
+    height: 40px;
+    position: relative;
+    display: none;
+    z-index: 3;
+    background: url("../img/internals_frame.png") -370px -156px no-repeat;
+}
+
 /*          End Content         */
 
 /*          Start Product configuration           */
@@ -112,11 +163,13 @@ html,body {
     float: left;
     width: 50px;
 }
+
 .product-configuration .dragbar-tooltip {
     font-size: 12px;
     font-weight: 600;
     text-transform: uppercase;
 }
+
 .product-configuration .black-btn {
     display: inline-block;
     padding: 10px 20px;
@@ -132,6 +185,7 @@ html,body {
     font-size: 14px;
     color: white;
 }
+
 .dragbar {
     padding: 25px 0;
     -moz-transform: rotate(90deg); /* Для Firefox */
@@ -140,6 +194,7 @@ html,body {
     -o-transform: rotate(90deg); /* Для Opera */
     transform: rotate(90deg);
 }
+
 .dragbar input[type=range] {
     /*removes default webkit styles*/
     -webkit-appearance: none;
@@ -150,6 +205,7 @@ html,body {
     /*required for proper track sizing in FF*/
     width: 190px;
 }
+
 .dragbar input[type=range]::-webkit-slider-runnable-track {
     width: 190px;
     height: 1px;
@@ -157,6 +213,7 @@ html,body {
     border: none;
     border-radius: 3px;
 }
+
 .dragbar input[type=range]::-webkit-slider-thumb {
     -webkit-appearance: none;
     border: none;
@@ -166,9 +223,11 @@ html,body {
     background: black;
     margin-top: -9px;
 }
+
 .dragbar input[type=range]:focus {
     outline: none;
 }
+
 .dragbar input[type=range]:focus::-webkit-slider-runnable-track {
     background: #ccc;
 }
@@ -180,6 +239,7 @@ html,body {
     border: none;
     border-radius: 3px;
 }
+
 .dragbar input[type=range]::-moz-range-thumb {
     border: none;
     height: 16px;
@@ -189,7 +249,7 @@ html,body {
 }
 
 /*hide the outline behind the border*/
-.dragbar input[type=range]:-moz-focusring{
+.dragbar input[type=range]:-moz-focusring {
     outline: 1px solid white;
     outline-offset: -1px;
 }
@@ -208,14 +268,17 @@ html,body {
     /*remove default tick marks*/
     color: transparent;
 }
+
 .dragbar input[type=range]::-ms-fill-lower {
     background: #777;
     border-radius: 10px;
 }
+
 .dragbar input[type=range]::-ms-fill-upper {
     background: #ddd;
     border-radius: 10px;
 }
+
 .dragbar input[type=range]::-ms-thumb {
     border: none;
     height: 16px;
@@ -223,10 +286,13 @@ html,body {
     border-radius: 50%;
     background: goldenrod;
 }
+
 .dragbar input[type=range]:focus::-ms-fill-lower {
     background: #888;
 }
+
 .dragbar input[type=range]:focus::-ms-fill-upper {
     background: #ccc;
 }
+
 /*          End product configuration         */
