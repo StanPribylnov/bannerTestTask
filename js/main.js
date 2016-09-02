@@ -166,7 +166,7 @@ function onYouTubeIframeAPIReady() {
         function rainSlideDown(rainItem) {
             setTimeout(function () {
                 rainItem.style.top = "300px";
-            }, 250);
+            }, 500);
         }
 
         /**
