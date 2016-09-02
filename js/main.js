@@ -40,7 +40,7 @@ function stopVideo() {
  */
 function onYouTubeIframeAPIReady() {
     player = new YT.Player('video-frame', {
-        height: '363',
+        height: '356',
         width: '202',
         videoId: '9xKR8Vcjias',
         events: {
@@ -157,13 +157,47 @@ function onYouTubeIframeAPIReady() {
         }
 
         /**
-         * Method show product text
+         * Method slide rain to bottom
          *
-         * @method renderRainItem
-         * @param position {number} - position of range slider
+         * @method rainSlideDown
+         * @param rainItem {object} - object of rain item
          * @returns {void}
          */
-        function renderRainItems(position) {
+        function rainSlideDown(rainItem) {
+            setTimeout(function () {
+                rainItem.style.top = "300px";
+            }, 250);
+        }
+
+        /**
+         * Method render item
+         *
+         * @method renderRainItem
+         * @param item {object} - array of rain drops
+         * @returns {void}
+         */
+        function renderRainItem(item) {
+            var rainItem = document.createElement("div");
+
+            rainItem.className = "rain-drop-" + item.rainDropType;
+            rainItem.style.top = item.startPositionY + "px";
+            rainItem.style.left = item.startPositionX + "px";
+
+            elements.$product.appendChild(rainItem);
+            rainSlideDown(rainItem);
+        }
+
+        /**
+         * Method render items of rain
+         *
+         * @method renderRainItems
+         * @param items {object} - array of rain drops
+         * @returns {void}
+         */
+        function renderRainItems(items) {
+            for (var i = 0; i < items.length; i++) {
+                renderRainItem(items[i]);
+            }
         }
 
         /**
@@ -175,19 +209,18 @@ function onYouTubeIframeAPIReady() {
          */
         function generateRain(position) {
             var i = 0,
-                rainItemsCount = randomNumber(15, 30),
+                rainItemsCount = randomNumber(1, 9),
                 rainItems = [];
 
             if (position >= 3 && position <= 21) {
                 for (i = 0; i <= rainItemsCount; i++) {
                     rainItems.push({
                         rainDropType: randomNumber(1, 4),
-                        startPositionX: randomNumber(1, 500),
-                        startPositionY: randomNumber(1, 500)
+                        startPositionX: randomNumber(1, 450),
+                        startPositionY: randomNumber(1, 190)
                     });
                 }
-                console.log(rainItems);
-                renderRainItems(1);
+                renderRainItems(rainItems);
             }
         }
 
@@ -241,7 +274,6 @@ function onYouTubeIframeAPIReady() {
          */
         function setEventHandlers() {
             elements.$range.oninput = function () {
-                console.log(elements.$range.value);
 
                 toggleVideo(isDefaultState());
                 changeImage();

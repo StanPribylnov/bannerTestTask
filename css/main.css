@@ -82,13 +82,14 @@ html, body {
 }
 
 .content .product {
-    width: 450px;
+    width: 465px;
     height: 225px;
-    background: url("../img/phone/phone_sprite.png") -32px 1px
+    background: url("../img/phone/phone_sprite.png") -28px 1px
 }
 
 .product {
     position: relative;
+    overflow: hidden;
 }
 
 .product iframe {
@@ -106,6 +107,9 @@ html, body {
     top: 0;
     left: 0;
     background: url("../img/raindrop_1.png") no-repeat;
+    transition: all 1s ease-in;
+    -moz-transition: all 1s ease-in;
+    -web-kit-transition: all 1s ease-in;
 }
 .product .rain-drop-2 {
     width: 40px;
